@@ -10,7 +10,7 @@ function App() {
   and the ethical considerations of AI deployment. Our guest expert shared insights on how 
   businesses can leverage AI for competitive advantage while maintaining responsible practices.`
 
-  const mockAudioUrl = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+  const mockAudioUrl = "https://on.soundcloud.com/fiO7LZQteI7OJHtdJm"
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0]
