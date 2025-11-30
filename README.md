@@ -57,12 +57,6 @@
     *First run note: The AI model (~300MB) will be downloaded to your browser cache. This may take a minute.*
 4.  **Enjoy**: Read the summary or click "Play" to listen to it.
 
-## 🐛 Troubleshooting
-
--   **"Unterminated JSX contents"**: This error has been fixed. Ensure you have the latest version of `App.jsx`.
--   **"Cannot read properties of undefined (reading 'registerBackend')"**: This ONNX Runtime error has been fixed by adjusting the configuration initialization.
--   **Model Loading**: If the model fails to load, check your internet connection (needed for the initial download) and refresh the page.
-
 ## 📄 License
 
 This project is licensed under the MIT License.
