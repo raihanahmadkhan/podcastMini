@@ -1,7 +1,7 @@
 from transformers import pipeline, AutoTokenizer, AutoModelForSeq2SeqLM
 import nltk, math
 
-MODEL_NAME = "facebook/bart-large-cnn"  # fallback: "t5-base" or "google/pegasus-xsum"
+MODEL_NAME = "facebook/bart-large-cnn"
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 model = AutoModelForSeq2SeqLM.from_pretrained(MODEL_NAME)
 summarizer = pipeline("summarization", model=model, tokenizer=tokenizer, device_map="auto")
@@ -29,11 +29,11 @@ def map_summaries(chunks, max_len=220, min_len=90):
 
 def reduce_summary(mapped, target="medium"):
     text = "\n".join(mapped)
-    if target == "short":  # ~5–7 bullets
+    if target == "short":
         max_len, min_len = 140, 60
-    elif target == "detailed":  # ~2–3 paras
+    elif target == "detailed":
         max_len, min_len = 380, 180
-    else:  # medium
+    else:
         max_len, min_len = 240, 120
     prompt = "Create a coherent single summary with logical flow and no repetition:\n\n" + text
     return summarizer(prompt, max_length=max_len, min_length=min_len, do_sample=False)[0]["summary_text"]
