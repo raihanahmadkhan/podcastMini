@@ -1,42 +1,35 @@
 import { useState } from 'react'
 
 function App() {
-  // State management for the demo
   const [uploadedFile, setUploadedFile] = useState(null)
   const [isProcessing, setIsProcessing] = useState(false)
   const [showResults, setShowResults] = useState(false)
 
-  // Mock summary text for demo purposes
   const mockSummary = `In this episode, we explored the fascinating world of AI and machine learning. 
   Key highlights include: the evolution of neural networks, practical applications in healthcare, 
   and the ethical considerations of AI deployment. Our guest expert shared insights on how 
   businesses can leverage AI for competitive advantage while maintaining responsible practices.`
 
-  // Mock audio URL (using a sample audio file)
   const mockAudioUrl = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
 
-  // Handle file upload
   const handleFileUpload = (event) => {
     const file = event.target.files[0]
     if (file && (file.type === 'audio/mpeg' || file.type === 'audio/wav')) {
       setUploadedFile(file)
-      setShowResults(false) // Reset results when new file is uploaded
+      setShowResults(false)
     } else {
       alert('Please upload a valid .mp3 or .wav file')
     }
   }
 
-  // Handle summary generation (mock behavior)
   const handleGenerateSummary = () => {
     if (!uploadedFile) {
       alert('Please upload a file first!')
       return
     }
 
-    // Simulate processing
     setIsProcessing(true)
     
-    // Mock delay to simulate backend processing
     setTimeout(() => {
       setIsProcessing(false)
       setShowResults(true)
@@ -50,7 +43,6 @@ function App() {
           <div className="card shadow-lg border-0 rounded-4">
             <div className="card-body p-4 p-md-5">
               
-              {/* Header Section */}
               <div className="text-center mb-5">
                 <h1 className="display-4 fw-bold mb-2">
                   🎧 PodcastMini
@@ -58,7 +50,6 @@ function App() {
                 <p className="text-muted fs-5">Your Podcast, Simplified</p>
               </div>
 
-              {/* File Upload Section */}
               <div className="mb-4">
                 <label className="form-label fw-semibold">
                   Upload Podcast Audio
@@ -100,7 +91,6 @@ function App() {
                   </label>
                 </div>
                 
-                {/* File upload success message */}
                 {uploadedFile && (
                   <div className="alert alert-success d-flex align-items-center mt-3" role="alert">
                     <svg width="20" height="20" className="me-2" fill="currentColor" viewBox="0 0 20 20">
@@ -117,7 +107,6 @@ function App() {
                 )}
               </div>
 
-              {/* Generate Button */}
               <button
                 onClick={handleGenerateSummary}
                 disabled={!uploadedFile || isProcessing}
@@ -127,7 +116,6 @@ function App() {
                 {isProcessing ? 'Processing...' : 'Generate Summary'}
               </button>
 
-              {/* Loading Indicator */}
               {isProcessing && (
                 <div className="d-flex align-items-center justify-content-center mb-4">
                   <div className="spinner-border text-primary me-3" role="status" style={{color: '#7c3aed'}}>
@@ -139,10 +127,8 @@ function App() {
                 </div>
               )}
 
-              {/* Results Section */}
               {showResults && (
                 <div>
-                  {/* Summary Text */}
                   <div className="mb-4">
                     <h2 className="h4 fw-semibold mb-3">
                       📝 Summary
@@ -152,7 +138,6 @@ function App() {
                     </div>
                   </div>
 
-                  {/* Audio Player */}
                   <div className="mb-4">
                     <h2 className="h4 fw-semibold mb-3">
                       🎵 Mini Podcast
@@ -170,10 +155,9 @@ function App() {
                 </div>
               )}
 
-              {/* Footer Note */}
               <div className="text-center mt-4">
                 <p className="text-muted small mb-0">
-                  Demo Mode: No backend processing • Mock data displayed
+                  AI Ready • Start generating your podcast summary
                 </p>
               </div>
             </div>
